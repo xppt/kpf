@@ -93,8 +93,6 @@ func main() {
 
 		cmd.Wait()
 
-		close(stop)
-
 		if cmd.ProcessState.Exited() {
 			os.Exit(cmd.ProcessState.ExitCode())
 		} else {
@@ -105,6 +103,8 @@ func main() {
 
 	signalChan := make(chan os.Signal, 1)
 	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
+
+	// TODO: forward the signal to the child if started, cancel otherwise.
 
 	go func() {
 		<-signalChan
