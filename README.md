@@ -19,5 +19,10 @@ $ kpf my-redis-pod-0 6379 redis-cli -p _
 Only the first and exact underscore argument will be replaced while starting the `prog`.
 ```
 $ kpf my-redis-pod-0 6379 echo __ _ _
+
 __ 43069 _
+
+$ kpf my-http-pod-0 8000 sh -c 'curl "http://localhost:$0/metrics"' _
+
+<http resp>
 ```
