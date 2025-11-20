@@ -6,7 +6,7 @@ One-shot port forward for a single command using dynamic local port.
 
 Usage:
 ```
-$ kpf [-n <ns>] <pod> <port> <prog>...
+$ kpf [-n <ns>] <pod-or-similar> <port> <prog>...
 ```
 
 Specified `prog` will be exec-ed with already binded local port.
@@ -25,4 +25,6 @@ __ 43069 _
 $ kpf my-http-pod-0 8000 sh -c 'curl "http://localhost:$0/metrics"' _
 
 <http resp>
+
+$ kpf svc/my-pg-service 5432 psql -p _
 ```
